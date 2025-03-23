@@ -1,0 +1,20 @@
+{
+  "name": "fast-pizza-api",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000f\u0000a\u0000s\u0000t\u0000-\u0000p\u0000i\u0000z\u0000z\u0000a\u0000-\u0000a\u0000p\u0000i\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
