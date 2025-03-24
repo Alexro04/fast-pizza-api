@@ -10,7 +10,7 @@ async function getAllOrders(req, res) {
         data: allOrders,
       });
     } else {
-      res.status(404).json({
+      res.status(200).json({
         success: true,
         message: "No Order stored in the database",
       });
@@ -23,6 +23,7 @@ async function getAllOrders(req, res) {
     });
   }
 }
+
 async function addOrder(req, res) {
   try {
     const orderToBeCreated = {
@@ -46,16 +47,17 @@ async function addOrder(req, res) {
     });
   }
 }
+
 async function getOrderById(req, res) {
   const orderId = req.params.orderId;
   try {
-    const Order = await Order.findById(orderId);
+    const order = await Order.findById(orderId);
 
-    if (Order) {
+    if (order) {
       res.status(200).json({
         success: true,
         message: "Order fetched from database successfully",
-        data: Order,
+        data: order,
       });
     } else {
       res.status(404).json({
@@ -70,18 +72,19 @@ async function getOrderById(req, res) {
     });
   }
 }
+
 async function updateOrderById(req, res) {
   const orderId = req.params.orderId;
   try {
-    const Order = await Order.findByIdAndUpdate(orderId, req.body, {
+    const order = await Order.findByIdAndUpdate(orderId, req.body, {
       new: true,
     });
 
-    if (Order) {
+    if (order) {
       res.status(200).json({
         success: true,
         message: "Order updated successfully",
-        data: Order,
+        data: order,
       });
     } else {
       res.status(404).json({
@@ -96,16 +99,17 @@ async function updateOrderById(req, res) {
     });
   }
 }
+
 async function deleteOrderById(req, res) {
   const orderId = req.params.orderId;
   try {
-    const Order = await Order.findByIdAndDelete(orderId);
+    const order = await Order.findByIdAndDelete(orderId);
 
-    if (Order) {
+    if (order) {
       res.status(200).json({
         success: true,
         message: "Order deleted from database successfully",
-        data: Order,
+        data: order,
       });
     } else {
       res.status(404).json({
