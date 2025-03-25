@@ -26,9 +26,14 @@ async function getAllOrders(req, res) {
 
 async function addOrder(req, res) {
   try {
+    const deliveryDate = new Date();
+    const delay = req.body.priority ? 20 : 30;
+    deliveryDate.setMinutes(deliveryDate.getMinutes() + delay);
     const orderToBeCreated = {
       ...req.body,
       priorityPrice: req.body.orderPrice * 0.2,
+      status: "preparing",
+      estimatedDelivery: deliveryDate,
     };
     const newOrder = await Order.create(orderToBeCreated);
 
@@ -40,7 +45,6 @@ async function addOrder(req, res) {
       });
     }
   } catch (error) {
-    // console.log(error.message);
     res.status(500).json({
       success: false,
       message: error.message,
