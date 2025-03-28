@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 
 async function connectToDB() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://fastpizzaapi:fastpizzaapi12@cluster0.iuhwo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    );
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to database successfully...");
   } catch (error) {
     console.error(error);
