@@ -6,7 +6,7 @@ const orderRoutes = require("./routes/order-routes");
 const authRoutes = require("./routes/auth-routes");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // connect to database
 connectToDB();
