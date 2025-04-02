@@ -4,6 +4,7 @@ const connectToDB = require("./database/db");
 const pizzaRoutes = require("./routes/pizza-routes");
 const orderRoutes = require("./routes/order-routes");
 const authRoutes = require("./routes/auth-routes");
+const homeRoutes = require("./routes/home-routes");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/pizza", pizzaRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/home", homeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);

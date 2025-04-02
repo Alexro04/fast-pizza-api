@@ -22,7 +22,7 @@ async function loginUser(req, res) {
         message: "Invalid Password.",
       });
 
-    const token = jwt.sign(
+    const accessToken = jwt.sign(
       {
         username: user.username,
         email: user.email,
@@ -35,7 +35,7 @@ async function loginUser(req, res) {
     res.status(200).json({
       success: true,
       message: "Login Sucessful.",
-      token,
+      accessToken,
     });
   } catch (error) {
     console.log(error);
@@ -48,7 +48,7 @@ async function loginUser(req, res) {
 
 async function registerUser(req, res) {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     // check if user exists
     const isExistingUser = await User.findOne({
@@ -70,6 +70,7 @@ async function registerUser(req, res) {
       username,
       email,
       password: hashedPassword,
+      role: role || "user",
     });
 
     if (newUser) {
